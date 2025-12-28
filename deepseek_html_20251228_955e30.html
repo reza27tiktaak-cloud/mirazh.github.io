@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لندینگ پیج لوکس | طراحی تجملاتی</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-dark: #0A0A0A;
+            --secondary-dark: #111111;
+            --accent-dark: #0C3B2E;
+            --accent-light: #1B9C6A;
+            --highlight: #2DFF9E;
+            --glass-bg: rgba(15, 15, 15, 0.7);
+            --text-primary: #FFFFFF;
+            --text-secondary: #CCCCCC;
+        }
+
+        body {
+            background-color: var(--primary-dark);
+            color: var(--text-primary);
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(12, 59, 46, 0.3) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(27, 156, 106, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 40% 80%, rgba(45, 255, 158, 0.1) 0%, transparent 20%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* هدر */
+        header {
+            padding: 25px 0;
+            position: relative;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid rgba(45, 255, 158, 0.1);
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(45, 255, 158, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .logo-container {
+            position: relative;
+        }
+
+        .logo-circle {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent-dark), var(--accent-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                0 0 25px rgba(45, 255, 158, 0.3),
+                inset 0 0 15px rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(45, 255, 158, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-circle::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            top: 10px;
+            left: 10px;
+            filter: blur(5px);
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.8rem;
+            background: linear-gradient(to right, var(--highlight), var(--accent-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(45, 255, 158, 0.3);
+            z-index: 2;
+            position: relative;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 10px 15px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--highlight);
+            background: rgba(45, 255, 158, 0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 15px;
+            width: 0;
+            height: 2px;
+            background: var(--highlight);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: calc(100% - 30px);
+        }
+
+        /* بخش اصلی */
+        .main-content {
+            display: flex;
+            margin-top: 50px;
+            gap: 50px;
+        }
+
+        .description-section {
+            flex: 1;
+            padding: 40px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            border: 1px solid rgba(45, 255, 158, 0.1);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(45, 255, 158, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .description-section::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(45, 255, 158, 0.1) 0%, transparent 70%);
+            top: -50px;
+            right: -50px;
+            border-radius: 50%;
+        }
+
+        .description-title {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            background: linear-gradient(to right, var(--text-primary), var(--highlight));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.3;
+            position: relative;
+            display: inline-block;
+        }
+
+        .description-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--highlight));
+            border-radius: 3px;
+        }
+
+        .description-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-top: 30px;
+        }
+
+        .description-text p {
+            margin-bottom: 15px;
+        }
+
+        /* فرم‌های آپلود عکس */
+        .upload-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .upload-form {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(45, 255, 158, 0.1);
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(45, 255, 158, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .upload-form:hover {
+            transform: translateY(-5px);
+        }
+
+        .upload-form::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            top: 0;
+            right: 0;
+            background: linear-gradient(to right, var(--accent-dark), var(--highlight));
+        }
+
+        .upload-title {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--highlight);
+        }
+
+        .upload-title i {
+            font-size: 1.6rem;
+            text-shadow: 0 0 10px rgba(45, 255, 158, 0.5);
+        }
+
+        .upload-area {
+            border: 2px dashed rgba(45, 255, 158, 0.3);
+            border-radius: 15px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(12, 59, 46, 0.1);
+        }
+
+        .upload-area:hover {
+            border-color: var(--highlight);
+            background: rgba(45, 255, 158, 0.05);
+        }
+
+        .upload-icon {
+            font-size: 2.5rem;
+            color: var(--accent-light);
+            margin-bottom: 15px;
+        }
+
+        .upload-text {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        /* بخش تماس و شبکه‌های اجتماعی */
+        .contact-section {
+            margin-top: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            border: 1px solid rgba(45, 255, 158, 0.1);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(45, 255, 158, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(45, 255, 158, 0.05) 0%, transparent 70%);
+            bottom: -100px;
+            left: -100px;
+            border-radius: 50%;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--highlight);
+        }
+
+        .contact-text {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 500px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 25px;
+        }
+
+        .icon-3d {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            text-decoration: none;
+            position: relative;
+            box-shadow: 
+                0 10px 20px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(45, 255, 158, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+            perspective: 500px;
+        }
+
+        .icon-3d::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, 
+                rgba(255,255,255,0.1) 0%, 
+                transparent 30%, 
+                transparent 70%, 
+                rgba(255,255,255,0.1) 100%);
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .icon-3d::after {
+            content: '';
+            position: absolute;
+            width: 90%;
+            height: 90%;
+            border-radius: 50%;
+            background: inherit;
+            z-index: 1;
+        }
+
+        .icon-3d i {
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .instagram {
+            background: linear-gradient(135deg, #833AB4, #E1306C, #FCAF45);
+        }
+
+        .whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+        }
+
+        .contact-icon {
+            background: linear-gradient(135deg, var(--accent-light), var(--highlight));
+        }
+
+        .icon-3d:hover {
+            transform: translateY(-10px) rotateX(20deg);
+            box-shadow: 
+                0 15px 30px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(45, 255, 158, 0.4);
+        }
+
+        /* فوتر */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(45, 255, 158, 0.1);
+        }
+
+        /* افکت‌های نور */
+        .light-effect {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        .light-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--highlight);
+            top: 10%;
+            right: 10%;
+        }
+
+        .light-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--accent-light);
+            bottom: 10%;
+            left: 10%;
+        }
+
+        /* ریسپانسیو */
+        @media (max-width: 1200px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .contact-section {
+                flex-direction: column;
+                gap: 40px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 25px;
+                padding: 25px;
+            }
+            
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .social-icons {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .description-section, .upload-form, .contact-section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- افکت‌های نور پس‌زمینه -->
+    <div class="light-effect light-1"></div>
+    <div class="light-effect light-2"></div>
+
+    <div class="container">
+        <!-- هدر -->
+        <header>
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo-circle">
+                        <div class="logo-text">LUXE</div>
+                    </div>
+                </div>
+                
+                <nav class="nav-links">
+                    <a href="#home">صفحه اصلی</a>
+                    <a href="#services">خدمات</a>
+                    <a href="#portfolio">نمونه کارها</a>
+                    <a href="#about">درباره ما</a>
+                    <a href="#contact">تماس</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- بخش اصلی -->
+        <section class="main-content">
+            <div class="description-section">
+                <h2 class="description-title">طراحی لوکس و تجملاتی با جلوه‌های پیشرفته</h2>
+                <div class="description-text">
+                    <p>به دنیای طراحی‌های لوکس و تجملاتی خوش آمدید. این لندینگ پیج با استفاده از جدیدترین تکنیک‌های طراحی وب، جلوه‌های بصری خیره‌کننده‌ای را ارائه می‌دهد که حس لوکس بودن و تجملات را به بیننده منتقل می‌کند.</p>
+                    <p>پالت رنگ مشکی و سبز تیره در کنار هایلایت‌های سبز روشن، فضایی جذاب و مدرن ایجاد کرده است. استفاده از جلوه شیشه‌ای (Glassmorphism) و المان‌های سه‌بعدی عمق و زیبایی خاصی به طراحی بخشیده است.</p>
+                    <p>ایکون‌های سه‌بعدی با انیمیشن‌های ظریف، فرم‌های آپلود عکس با طراحی منحصر به فرد و تایپوگرافی مدرن از جمله ویژگی‌های این طراحی هستند.</p>
+                    <p>این لندینگ پیج کاملاً واکنش‌گرا است و در تمام دستگاه‌ها به زیبایی نمایش داده می‌شود. از فناوری‌های مدرن CSS مانند backdrop-filter، gradient و shadow برای ایجاد جلوه‌های بصری استفاده شده است.</p>
+                </div>
+            </div>
+
+            <div class="upload-section">
+                <!-- فرم اول -->
+                <div class="upload-form">
+                    <h3 class="upload-title">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        آپلود عکس اول
+                    </h3>
+                    <div class="upload-area">
+                        <div class="upload-icon">
+                            <i class="fas fa-file-image"></i>
+                        </div>
+                        <p class="upload-text">برای آپلود عکس اینجا کلیک کنید یا فایل را اینجا رها کنید</p>
+                        <p class="upload-text">فرمت‌های مجاز: JPG, PNG, GIF (حداکثر 5MB)</p>
+                    </div>
+                </div>
+
+                <!-- فرم دوم -->
+                <div class="upload-form">
+                    <h3 class="upload-title">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        آپلود عکس دوم
+                    </h3>
+                    <div class="upload-area">
+                        <div class="upload-icon">
+                            <i class="fas fa-images"></i>
+                        </div>
+                        <p class="upload-text">برای آپلود عکس اینجا کلیک کنید یا فایل را اینجا رها کنید</p>
+                        <p class="upload-text">فرمت‌های مجاز: JPG, PNG, GIF (حداکثر 5MB)</p>
+                    </div>
+                </div>
+
+                <!-- فرم سوم -->
+                <div class="upload-form">
+                    <h3 class="upload-title">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        آپلود عکس سوم
+                    </h3>
+                    <div class="upload-area">
+                        <div class="upload-icon">
+                            <i class="fas fa-photo-video"></i>
+                        </div>
+                        <p class="upload-text">برای آپلود عکس اینجا کلیک کنید یا فایل را اینجا رها کنید</p>
+                        <p class="upload-text">فرمت‌های مجاز: JPG, PNG, GIF (حداکثر 5MB)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- بخش تماس و شبکه‌های اجتماعی -->
+        <section class="contact-section">
+            <div class="contact-info">
+                <h3 class="contact-title">با ما در تماس باشید</h3>
+                <p class="contact-text">برای دریافت مشاوره رایگان، همکاری و یا هرگونه سوال، از طریق راه‌های ارتباطی زیر با ما در تماس باشید. کارشناسان ما در سریع‌ترین زمان ممکن پاسخگوی شما خواهند بود.</p>
+            </div>
+            
+            <div class="social-icons">
+                <a href="https://www.instagram.com" class="icon-3d instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                
+                <a href="https://wa.me/989123456789" class="icon-3d whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                
+                <a href="tel:+982188776655" class="icon-3d contact-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- فوتر -->
+        <footer>
+            <p>© 2023 لندینگ پیج لوکس. تمامی حقوق محفوظ است.</p>
+            <p>طراحی شده با <i class="fas fa-heart" style="color: var(--highlight);"></i> و جلوه‌های پیشرفته CSS</p>
+        </footer>
+    </div>
+
+    <script>
+        // افزودن قابلیت drag and drop به فرم‌های آپلود
+        document.querySelectorAll('.upload-area').forEach(area => {
+            area.addEventListener('dragover', e => {
+                e.preventDefault();
+                area.style.borderColor = 'var(--highlight)';
+                area.style.background = 'rgba(45, 255, 158, 0.1)';
+            });
+            
+            area.addEventListener('dragleave', () => {
+                area.style.borderColor = 'rgba(45, 255, 158, 0.3)';
+                area.style.background = 'rgba(12, 59, 46, 0.1)';
+            });
+            
+            area.addEventListener('drop', e => {
+                e.preventDefault();
+                area.style.borderColor = 'var(--highlight)';
+                area.style.background = 'rgba(45, 255, 158, 0.1)';
+                
+                // نمایش پیام موفقیت
+                const originalText = area.innerHTML;
+                area.innerHTML = `
+                    <div class="upload-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <p class="upload-text">عکس با موفقیت آپلود شد!</p>
+                `;
+                
+                // بازگشت به حالت اولیه بعد از 3 ثانیه
+                setTimeout(() => {
+                    area.innerHTML = originalText;
+                }, 3000);
+            });
+            
+            // کلیک روی آپلود
+            area.addEventListener('click', () => {
+                // در واقعیت اینجا یک input file ایجاد می‌شود
+                // برای نمونه فقط یک پیام نمایش می‌دهیم
+                const originalText = area.innerHTML;
+                area.innerHTML = `
+                    <div class="upload-icon">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </div>
+                    <p class="upload-text">در حال آپلود...</p>
+                `;
+                
+                // بازگشت به حالت اولیه بعد از 2 ثانیه
+                setTimeout(() => {
+                    area.innerHTML = originalText;
+                }, 2000);
+            });
+        });
+        
+        // انیمیشن برای آیکون‌ها
+        document.querySelectorAll('.icon-3d').forEach(icon => {
+            icon.addEventListener('mouseenter', () => {
+                const i = icon.querySelector('i');
+                i.style.transform = 'scale(1.2)';
+                i.style.transition = 'transform 0.3s ease';
+            });
+            
+            icon.addEventListener('mouseleave', () => {
+                const i = icon.querySelector('i');
+                i.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
